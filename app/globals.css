@@ -1,0 +1,449 @@
+@import "tailwindcss";
+
+:root {
+  --font-bungee: 'Bungee', cursive;
+  --font-fredoka: 'Fredoka', cursive, sans-serif;
+  --font-jakarta: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+}
+
+.choice-reaction { position: absolute; inset: 0; z-index: 25; pointer-events: none; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; padding: 12px; }
+.choice-reaction-actors { display: flex; align-items: flex-end; gap: 12px; margin-bottom: 12px; }
+.choice-reaction-actors span { font-size: clamp(36px, 7vw, 74px); filter: drop-shadow(0 5px 3px #0005); animation: helper-arrival 2.4s both; }
+.choice-reaction-caption { max-width: 95%; border-radius: 12px; padding: 6px 12px; background: #102239ed; color: #fde68a; font-size: 12px; text-align: center; }
+@keyframes helper-arrival { 0% { opacity: 0; transform: translateX(-180px) translateY(0); } 25% { opacity: 1; transform: translateX(0) translateY(-8px); } 40%, 65% { transform: translateY(0); } 52%, 78% { transform: translateY(-8px) rotate(-3deg); } 100% { transform: translateY(0); opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .choice-reaction-actors span { animation: none; } }
+
+@theme inline {
+  --font-title: 'Bungee', cursive;
+  --font-chunky: 'Fredoka', cursive, sans-serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-display: 'Bungee', cursive;
+  --font-mono: 'Fredoka', monospace, sans-serif;
+
+  --color-brand-blue: #205EE8;
+  --color-brand-darkblue: #133ca3;
+  --color-brand-yellow: #FFD214;
+  --color-brand-orange: #FF7B00;
+  --color-brand-cream: #FFFBF0;
+  --color-brand-ink: #111827;
+}
+
+@layer base {
+  html, body {
+    font-family: 'Fredoka', cursive, sans-serif;
+    background-color: #0f172a;
+    color: #111827;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+    overscroll-behavior-y: none;
+    min-height: 100dvh;
+  }
+
+  button, a, input, select, textarea {
+    touch-action: manipulation;
+  }
+
+  .font-title {
+    font-family: 'Bungee', cursive !important;
+  }
+
+  .font-chunky {
+    font-family: 'Fredoka', cursive, sans-serif !important;
+  }
+
+  .font-sans {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif !important;
+  }
+
+  .font-mono, .tabular-nums {
+    font-family: 'Fredoka', monospace, sans-serif !important;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Crisp 3D Pop Title with Subtle Shadow */
+.comic-title-3d {
+  color: #FFFFFF;
+  text-shadow:
+    2px 2px 0px #FF9F00,
+    3px 3px 0px #111827;
+  -webkit-text-stroke: 1px #111827;
+}
+
+/* Refined tactile buttons with subtle shadow */
+.btn-tactile-yellow {
+  background-color: #FFD214;
+  border: 1.5px solid #1E293B;
+  box-shadow: 0 2px 0px #B8860B, 0 4px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.08s ease, box-shadow 0.08s ease;
+}
+.btn-tactile-yellow:hover {
+  background-color: #ffdb33;
+}
+.btn-tactile-yellow:active {
+  transform: translateY(1.5px);
+  box-shadow: 0 1px 0px #B8860B;
+}
+
+.btn-tactile-white {
+  background-color: #FFFFFF;
+  border: 1.5px solid #1E293B;
+  box-shadow: 0 2px 0px #CBD5E1, 0 3px 6px rgba(0, 0, 0, 0.06);
+  transition: transform 0.08s ease, box-shadow 0.08s ease;
+}
+.btn-tactile-white:hover {
+  background-color: #F8FAFC;
+}
+.btn-tactile-white:active {
+  transform: translateY(1.5px);
+  box-shadow: 0 1px 0px #CBD5E1;
+}
+
+/* Subtle character sticker lift */
+.character-sticker-glow {
+  filter: drop-shadow(0 6px 14px rgba(9, 30, 99, 0.24));
+}
+
+/* Stop-Motion Puppet / Claymation Stepped Animation */
+@keyframes stopMotionStepped {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-1.5px) rotate(-0.75deg);
+  }
+  50% {
+    transform: translateY(0.5px) rotate(0.5deg);
+  }
+  75% {
+    transform: translateY(-0.8px) rotate(-0.25deg);
+  }
+}
+
+.stop-motion-actor {
+  animation: stopMotionStepped 0.85s steps(4, end) infinite;
+  transform-origin: center bottom;
+}
+
+/* Subtle Film Gate Registration Wobble for Level Transitions */
+@keyframes filmGateJitter {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(-0.5px, 0.5px); }
+  40% { transform: translate(0.5px, -0.5px); }
+  60% { transform: translate(-0.5px, -0.2px); }
+  80% { transform: translate(0.3px, 0.3px); }
+  100% { transform: translate(0, 0); }
+}
+
+.film-gate-wobble {
+  animation: filmGateJitter 0.2s linear 1;
+}
+
+/* Floating badges subtle bob animation */
+@keyframes gentleFloat {
+  0%, 100% { transform: translateY(0px) rotate(-1.5deg); }
+  50% { transform: translateY(-3px) rotate(-0.5deg); }
+}
+.badge-float {
+  animation: gentleFloat 3.2s ease-in-out infinite;
+}
+
+@keyframes starPulse {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.1) rotate(10deg); }
+}
+.star-pulse {
+  animation: starPulse 2.8s ease-in-out infinite;
+}
+
+/* Subtle festival carnival confetti & halftone comic pattern */
+.carnival-pattern-bg {
+  background-color: #205EE8;
+  background-image:
+    radial-gradient(circle at 18% 22%, rgba(255, 255, 255, 0.14) 0, rgba(255, 255, 255, 0.14) 5px, transparent 6px),
+    radial-gradient(circle at 82% 28%, rgba(255, 210, 20, 0.18) 0, rgba(255, 210, 20, 0.18) 7px, transparent 8px),
+    radial-gradient(circle at 15% 72%, rgba(255, 123, 0, 0.15) 0, rgba(255, 123, 0, 0.15) 6px, transparent 7px),
+    radial-gradient(circle at 86% 75%, rgba(255, 255, 255, 0.12) 0, rgba(255, 255, 255, 0.12) 4px, transparent 5px),
+    radial-gradient(ellipse at 50% 38%, rgba(59, 130, 246, 0.55) 0%, rgba(32, 94, 232, 0.95) 75%);
+}
+
+/* Warm Teal-Bazaar pattern for Helping Miso splash & hero banner */
+.miso-pattern-bg {
+  background-color: #0F766E;
+  background-image:
+    radial-gradient(circle at 18% 22%, rgba(255, 255, 255, 0.14) 0, rgba(255, 255, 255, 0.14) 5px, transparent 6px),
+    radial-gradient(circle at 82% 28%, rgba(255, 210, 20, 0.2) 0, rgba(255, 210, 20, 0.2) 7px, transparent 8px),
+    radial-gradient(circle at 15% 72%, rgba(255, 123, 0, 0.16) 0, rgba(255, 123, 0, 0.16) 6px, transparent 7px),
+    radial-gradient(circle at 86% 75%, rgba(255, 255, 255, 0.12) 0, rgba(255, 255, 255, 0.12) 4px, transparent 5px),
+    radial-gradient(ellipse at 50% 38%, rgba(20, 184, 166, 0.55) 0%, rgba(15, 118, 110, 0.96) 75%);
+}
+
+/* Clean Card Surface for Gameplay Views with Reduced Shadow */
+.watercolor-surface {
+  background-color: #FFFFFF;
+  border: 1.5px solid #CBD5E1;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.05);
+}
+
+/* =====================================================================
+   STOP-MOTION SIMULATION DIORAMA KEYFRAMES & UTILITIES
+   ===================================================================== */
+@keyframes stopMotionSteam {
+  0% { transform: translateY(0px) scale(0.9); opacity: 0.8; }
+  33% { transform: translateY(-4px) scale(1.05) rotate(-2deg); opacity: 0.9; }
+  66% { transform: translateY(-8px) scale(1.2) rotate(2deg); opacity: 0.6; }
+  100% { transform: translateY(-13px) scale(1.35) rotate(-1deg); opacity: 0; }
+}
+.stop-motion-steam {
+  animation: stopMotionSteam 1.6s steps(4) infinite;
+}
+
+@keyframes stopMotionFerris {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.stop-motion-ferris {
+  animation: stopMotionFerris 24s steps(24) infinite linear;
+}
+
+@keyframes stopMotionBob {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  25% { transform: translateY(-2px) rotate(-1deg); }
+  50% { transform: translateY(1px) rotate(0.5deg); }
+  75% { transform: translateY(-1px) rotate(-0.5deg); }
+}
+.stop-motion-bob {
+  animation: stopMotionBob 0.9s steps(4) infinite;
+}
+
+@keyframes stopMotionWiggleFast {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  33% { transform: rotate(-2deg) scale(1.02); }
+  66% { transform: rotate(2deg) scale(0.98); }
+}
+.stop-motion-reaction {
+  animation: stopMotionWiggleFast 0.4s steps(3) infinite;
+}
+
+@keyframes comicSpeechPop {
+  0% { transform: scale(0.7) translateY(8px); opacity: 0; }
+  70% { transform: scale(1.04) translateY(-2px); opacity: 1; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+.speech-bubble-pop {
+  animation: comicSpeechPop 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes coinFloatUp {
+  0% { transform: translateY(0) scale(0.8); opacity: 1; }
+  50% { transform: translateY(-18px) scale(1.1); opacity: 1; }
+  100% { transform: translateY(-34px) scale(0.9); opacity: 0; }
+}
+.coin-float-fx {
+  animation: coinFloatUp 0.9s ease-out forwards;
+}
+
+/* Paper Cutout Sticker Effect with Crisp Stroke & Drop Shadow */
+.diorama-sticker {
+  filter: drop-shadow(0 3px 0 #0f172a) drop-shadow(0 6px 12px rgba(15, 23, 42, 0.22));
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Retro Arcade Game Feel & Tactile Button Depth */
+.arcade-btn {
+  box-shadow: 0 4px 0 #020617;
+  transition: all 0.12s ease;
+}
+.arcade-btn:hover {
+  box-shadow: 0 2px 0 #020617;
+  transform: translateY(2px);
+}
+.arcade-btn:active {
+  box-shadow: 0 0 0 #020617;
+  transform: translateY(4px);
+}
+
+.arcade-bezel {
+  box-shadow: inset 0 2px 6px rgba(255, 255, 255, 0.2), 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* Screen Shake for Arcade Game Impacts */
+@keyframes arcadeShake {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  20% { transform: translate3d(-3px, 2px, 0) rotate(-0.5deg); }
+  40% { transform: translate3d(3px, -2px, 0) rotate(0.5deg); }
+  60% { transform: translate3d(-2px, -1px, 0) rotate(-0.25deg); }
+  80% { transform: translate3d(2px, 1px, 0) rotate(0.25deg); }
+}
+.animate-shake {
+  animation: arcadeShake 0.28s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  will-change: transform;
+}
+
+/* Floating RPG Impact Numbers */
+@keyframes floatUpFade {
+  0% { transform: translateY(0) scale(0.85); opacity: 0; }
+  20% { transform: translateY(-8px) scale(1.15); opacity: 1; }
+  70% { transform: translateY(-28px) scale(1.05); opacity: 1; }
+  100% { transform: translateY(-48px) scale(0.9); opacity: 0; }
+}
+.animate-float-up {
+  animation: floatUpFade 1.1s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+  animation: fadeIn 0.2s ease-out forwards;
+}
+
+/* Card Deal Stagger Animation */
+@keyframes cardDealIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.animate-card-deal {
+  animation: cardDealIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Glowing Neon Border Beam */
+@keyframes neonPulse {
+  0%, 100% {
+    box-shadow: 0 0 8px rgba(251, 191, 36, 0.4), inset 0 0 4px rgba(251, 191, 36, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 18px rgba(251, 191, 36, 0.8), inset 0 0 8px rgba(251, 191, 36, 0.4);
+  }
+}
+.animate-neon-pulse {
+  animation: neonPulse 2s infinite ease-in-out;
+}
+
+/* Scanning Light Beam */
+@keyframes scannerSweep {
+  0% { transform: translateY(-40px); opacity: 0.2; }
+  50% { opacity: 0.8; }
+  100% { transform: translateY(40px); opacity: 0.2; }
+}
+.animate-scanner-sweep {
+  animation: scannerSweep 2.2s ease-in-out infinite alternate;
+}
+
+/* Game level touch feedback and readable mobile decision deck. */
+.game-choice-card {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  box-shadow: 0 4px 0 #0b1427, 0 10px 22px rgba(0, 0, 0, .18);
+}
+
+.game-results-scroll { scrollbar-width: thin; scrollbar-color: #d6a927 transparent; }
+.victory-card {
+  position: relative; overflow: hidden; flex: none; border: 2px solid #f6c84a; border-radius: 18px;
+  padding: 16px; color: white; box-shadow: 0 6px 0 #0a1222, 0 16px 36px rgba(3, 9, 23, .28);
+  isolation: isolate;
+}
+.victory-card-miso { background: linear-gradient(135deg, #0d615c, #102b4c 65%, #17213b); }
+.victory-card-funfair { background: linear-gradient(135deg, #9a3e13, #4b286d 62%, #17213b); }
+.victory-rays { position: absolute; inset: -80%; z-index: -1; opacity: .14; background: repeating-conic-gradient(from 10deg, transparent 0 12deg, #fff 12deg 20deg); animation: victory-rays-spin 28s linear infinite; }
+@keyframes victory-rays-spin { to { transform: rotate(360deg); } }
+.victory-trophy { display: grid; width: 54px; height: 54px; flex: none; place-items: center; border: 2px solid #fff0a4; border-radius: 16px; color: #1b2940; background: linear-gradient(145deg, #fff3a7, #f1b72e); box-shadow: 0 4px 0 #9f6912; }
+.victory-rank { display: flex; align-items: baseline; color: #ffe790; font: 800 27px var(--font-fredoka); }
+.victory-rank span { font-size: 13px; }
+.victory-stat { min-width: 0; border: 1px solid rgba(255,255,255,.14); border-radius: 12px; padding: 8px; background: rgba(3,12,28,.34); backdrop-filter: blur(5px); }
+.victory-stat svg { width: 13px; height: 13px; color: #ffd34f; }
+.victory-stat span { display: block; margin-top: 2px; overflow: hidden; color: #b9c6d9; font-size: 9px; font-weight: 700; text-overflow: ellipsis; white-space: nowrap; }
+.victory-stat strong { display: block; margin-top: 1px; overflow: hidden; font-size: 13px; text-overflow: ellipsis; white-space: nowrap; }
+.victory-leaderboard-btn { position: relative; z-index: 2; display: flex; width: 100%; min-height: 42px; align-items: center; justify-content: center; gap: 7px; margin-top: 12px; border: 1px solid #ffe58b; border-radius: 12px; background: linear-gradient(#ffd95a, #f5b92e); color: #17213b; font-size: 12px; font-weight: 800; box-shadow: 0 3px 0 #966416; transition: transform .12s, box-shadow .12s; }
+.victory-leaderboard-btn:active { transform: translate3d(0, 2px, 0); box-shadow: 0 1px 0 #966416; }
+.leaderboard-row { display: flex; min-height: 54px; align-items: center; gap: 10px; border: 1px solid rgba(255,255,255,.09); border-radius: 12px; padding: 8px 10px; background: rgba(255,255,255,.045); }
+.leaderboard-player { border-color: #f5c84a; background: rgba(245,200,74,.12); box-shadow: inset 3px 0 #f5c84a; }
+.leaderboard-position { display: grid; width: 30px; height: 30px; flex: none; place-items: center; border-radius: 9px; background: rgba(255,255,255,.08); font-weight: 800; }
+.medal-1 { color: #ffd54f; } .medal-2 { color: #d5e0e8; } .medal-3 { color: #d99155; }
+@media (max-width: 380px) { .victory-card { padding: 12px; } .victory-trophy { width: 44px; height: 44px; } .victory-stat { padding: 6px; } }
+@media (prefers-reduced-motion: reduce) { .victory-rays { animation: none; } }
+.game-choice-card:active {
+  transform: translateY(3px) scale(.99);
+  box-shadow: 0 1px 0 #0b1427, 0 4px 10px rgba(0, 0, 0, .16);
+}
+.game-choice-card:focus-visible {
+  outline: 3px solid #fcd34d;
+  outline-offset: 2px;
+}
+.game-choice-confirmed {
+  box-shadow: 0 0 0 3px rgba(251, 191, 36, .25), 0 0 28px rgba(251, 191, 36, .25);
+}
+.game-decision-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #64748b transparent;
+  -webkit-overflow-scrolling: touch;
+}
+@media (max-width: 767px) {
+  .game-decision-scroll { scroll-padding-bottom: 1rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .game-choice-card, .game-choice-card *, .animate-card-deal,
+  .stop-motion-actor, .stop-motion-bob, .stop-motion-ferris,
+  .badge-float, .star-pulse { animation: none !important; transition-duration: .01ms !important; }
+}
+
+/* Responsive level layout shared by every story scene. */
+.game-decision-panel { min-width: 0; }
+.game-custom-controls button, .game-custom-controls label { touch-action: manipulation; }
+.game-custom-controls button:focus-visible, .game-custom-controls input:focus-visible {
+  outline: 3px solid #fbbf24;
+  outline-offset: 2px;
+}
+.game-custom-controls button { min-height: 42px; }
+.game-custom-controls input[type='checkbox'] { width: 18px; height: 18px; flex: none; }
+@media (max-width: 767px) {
+  .game-decision-panel { border-top: 3px solid #fbbf24; }
+  /* The scene is the hero on phones. Dialogue remains available in the choice
+     panel, so don't cover the animated world with a second text card. */
+  .scene-reaction-bubble { display: none; }
+  .game-decision-panel h2 { text-wrap: balance; }
+  .game-custom-controls .grid { min-width: 0; }
+  .game-custom-controls .grid > * { min-width: 0; }
+  .game-custom-controls .grid-cols-3 { gap: .375rem; }
+  .game-custom-controls .grid-cols-4 { gap: .25rem; }
+  .game-custom-controls button { white-space: normal; }
+}
+@media (max-width: 380px) {
+  .game-choice-card { padding: .7rem; gap: .5rem; }
+  .game-decision-panel .font-title { letter-spacing: -.025em; }
+  .game-decision-panel footer { display: none; }
+}
+
+/* Compact the outer HUD on phones so the playable level keeps usable height. */
+@media (max-width: 767px) {
+  [data-purpose='active-gameplay-arcade-shell'] { border: 0; border-radius: 0; }
+  [data-purpose='active-gameplay-arcade-shell'] [data-purpose='ios-status-bar'] { padding-top: max(.35rem, env(safe-area-inset-top)); padding-bottom: 0; }
+  [data-purpose='active-gameplay-arcade-shell'] [data-purpose='ios-status-bar'] .font-title { font-size: .75rem; }
+  [data-purpose='active-gameplay-arcade-shell'] [data-testid='unified-player-portfolio-bar'] { margin: .25rem .5rem 0; padding: .35rem .45rem; }
+  [data-purpose='active-gameplay-arcade-shell'] nav button { min-height: 44px; }
+}
+@media (max-height: 690px) and (max-width: 767px) {
+  [data-purpose='active-gameplay-arcade-shell'] [data-testid='unified-player-portfolio-bar'] .grid-cols-5 { display: none; }
+  [data-purpose='active-gameplay-arcade-shell'] [data-testid='unified-player-portfolio-bar'] > div:first-child { border: 0; padding-bottom: 0; }
+  .game-decision-panel footer { display: none; }
+}
+@media (max-width: 420px) {
+  .stock-product-row { flex-wrap: wrap; }
+  .stock-product-row > div:first-child { flex: 1 1 100%; }
+  .stock-product-row > div:last-child { width: 100%; justify-content: flex-end; }
+  .stock-product-row > div:last-child button { min-width: 44px; min-height: 40px; }
+}

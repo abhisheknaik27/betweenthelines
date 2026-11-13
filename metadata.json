@@ -1,0 +1,6 @@
+{
+  "name": "Between the Lines: Miso & Funfair Founder",
+  "description": "Interactive graphic-novel financial decision-making simulations for teenagers: navigate Miso's stray cat rescue journey and grow a stall 4x in Funfair Founder.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

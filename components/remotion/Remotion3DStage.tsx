@@ -831,7 +831,7 @@ export function Remotion3DStage({
       <div
         ref={containerRef}
         onMouseMove={handleMouseMove}
-        className="relative w-full md:w-7/12 h-[46%] md:h-full overflow-hidden flex flex-col justify-between bg-slate-950 shrink-0 md:shrink border-b-2 md:border-b-0 border-slate-800"
+        className="relative w-full md:w-7/12 h-[26%] sm:h-[34%] md:h-full overflow-hidden flex flex-col justify-between bg-slate-950 shrink-0 md:shrink border-b-2 md:border-b-0 border-slate-800"
       >
         {/* Top 3D Film Reel Slate & Status Bar */}
         <div className="relative z-30 bg-slate-950/95 backdrop-blur-md px-3 py-1.5 border-b-2 border-slate-900 flex items-center justify-between text-white shrink-0">
@@ -941,7 +941,7 @@ export function Remotion3DStage({
       {/* =====================================================================
           RIGHT PANE (DESKTOP) / BOTTOM PANE (MOBILE): INTERACTIVE DECISION DECK
          ===================================================================== */}
-      <div className="relative z-20 w-full md:w-5/12 h-[54%] md:h-full bg-slate-900/95 backdrop-blur-md border-t-2 md:border-t-0 md:border-l-2 border-slate-800 p-3 sm:p-3.5 flex flex-col justify-between shadow-2xl overflow-y-auto no-scrollbar">
+      <div className="relative z-20 w-full md:w-5/12 h-[74%] sm:h-[66%] md:h-full bg-slate-900/95 backdrop-blur-md border-t-2 md:border-t-0 md:border-l-2 border-slate-800 p-2 sm:p-3.5 flex flex-col justify-between shadow-2xl overflow-y-auto overscroll-contain no-scrollbar">
         {/* Top: Prompt Question Bar & Actor Avatar */}
         <div className="flex flex-col gap-1.5 shrink-0">
           <div className="flex items-start gap-2.5">

@@ -65,7 +65,7 @@ function MobileStatusBar({
 }
 
 export default function BetweenTheLinesApp() {
-  const [shellState, setShellState] = useState<ShellState>('loading');
+  const [shellState, setShellState] = useState<ShellState>('title');
   const [titleView, setTitleView] = useState<TitleScreenView>('home');
   const [activeGame, setActiveGame] = useState<'miso' | 'funfair'>('miso');
   const [playerName, setPlayerName] = useState<string>('Aarav Sharma');
@@ -90,12 +90,9 @@ export default function BetweenTheLinesApp() {
   const timerStartedCancelRef = useRef<(() => void) | null>(null);
 
   useEffect(() => {
-    let cancelled = false;
+    // Non-blocking warm-up of game assets in the background
     const loader = new AssetLoader();
-    loader.preload(GAME_ASSETS).then(() => {
-      if (!cancelled) setShellState('title');
-    });
-    return () => { cancelled = true; };
+    loader.preload(GAME_ASSETS).catch(() => {});
   }, []);
 
   const announceTimerStart = useCallback(() => {
@@ -473,7 +470,7 @@ export default function BetweenTheLinesApp() {
 
   // ============================================================================
   if (shellState === 'loading') {
-    return <main className="min-h-[100dvh] bg-slate-950 text-white grid place-items-center" aria-live="polite">
+    return <main className="fixed inset-0 w-full h-[100dvh] bg-slate-950 text-white grid place-items-center" aria-live="polite">
       <div className="text-center">
         <div className="mx-auto mb-4 h-12 w-12 rounded-full border-4 border-amber-300 border-t-transparent animate-spin" />
         <h1 className="font-title text-lg text-amber-300">Loading game assets</h1>
@@ -489,13 +486,13 @@ export default function BetweenTheLinesApp() {
   // ============================================================================
   if (shellState === 'title') {
     return (
-      <div className="bg-slate-950 flex items-center justify-center min-h-screen w-screen p-0 sm:p-2 md:p-3 select-none overflow-hidden">
+      <div className="fixed inset-0 w-full h-[100dvh] bg-slate-950 flex flex-col items-center justify-center p-0 sm:p-2 md:p-3 select-none overflow-hidden overscroll-none">
         {/* ====================================================================
             1. MAIN HOME PAGE: CHOOSE WHICH GAME TO GO TO
            ==================================================================== */}
         {titleView === 'home' && (
           <main
-            className="relative w-full sm:max-w-2xl md:max-w-5xl lg:max-w-6xl xl:max-w-7xl h-[100dvh] sm:h-[96dvh] max-h-[980px] carnival-pattern-bg overflow-hidden sm:rounded-2xl shadow-2xl flex flex-col justify-between border-3 border-slate-900"
+            className="relative w-full h-full sm:max-w-2xl md:max-w-5xl lg:max-w-6xl xl:max-w-7xl sm:h-[96dvh] max-h-[980px] carnival-pattern-bg overflow-hidden sm:rounded-2xl shadow-2xl flex flex-col justify-between border-0 sm:border-3 border-slate-900"
             data-purpose="main-home-selector"
           >
             {/* Ambient Stars */}
@@ -655,7 +652,7 @@ export default function BetweenTheLinesApp() {
             <nav
               aria-label="Home Bottom Navigation"
               data-purpose="home-bottom-navbar"
-              className="relative z-20 bg-brand-cream border-t-2 border-slate-900 rounded-t-2xl px-3 py-2 shadow-md shrink-0"
+              className="relative z-20 bg-brand-cream border-t-2 border-slate-900 rounded-t-2xl px-3 py-1.5 pb-[max(0.5rem,env(safe-area-inset-bottom))] shadow-md shrink-0"
             >
               <div className="grid grid-cols-4 gap-2">
                 <button
@@ -736,7 +733,7 @@ export default function BetweenTheLinesApp() {
            ==================================================================== */}
         {titleView === 'miso-splash' && (
           <main
-            className="relative w-full sm:max-w-2xl md:max-w-4xl lg:max-w-5xl xl:max-w-6xl h-[100dvh] sm:h-[96dvh] max-h-[980px] miso-pattern-bg overflow-hidden sm:rounded-2xl shadow-2xl flex flex-col justify-between border-3 border-slate-900"
+            className="relative w-full h-full sm:max-w-2xl md:max-w-4xl lg:max-w-5xl xl:max-w-6xl sm:h-[96dvh] max-h-[980px] miso-pattern-bg overflow-hidden sm:rounded-2xl shadow-2xl flex flex-col justify-between border-0 sm:border-3 border-slate-900"
             data-purpose="miso-mobile-splash-shell"
           >
             {/* Ambient Background Decor Elements */}
@@ -934,7 +931,7 @@ export default function BetweenTheLinesApp() {
            ==================================================================== */}
         {titleView === 'funfair-splash' && (
           <main
-            className="relative w-full sm:max-w-2xl md:max-w-4xl lg:max-w-5xl xl:max-w-6xl h-[100dvh] sm:h-[96dvh] max-h-[980px] carnival-pattern-bg overflow-hidden sm:rounded-2xl shadow-2xl flex flex-col justify-between border-3 border-slate-900"
+            className="relative w-full h-full sm:max-w-2xl md:max-w-4xl lg:max-w-5xl xl:max-w-6xl sm:h-[96dvh] max-h-[980px] carnival-pattern-bg overflow-hidden sm:rounded-2xl shadow-2xl flex flex-col justify-between border-0 sm:border-3 border-slate-900"
             data-purpose="funfair-mobile-splash-shell"
           >
             {/* Ambient Background Decor Elements */}
@@ -1169,9 +1166,9 @@ export default function BetweenTheLinesApp() {
   // ACTIVE GAMEPLAY & GAMEOVER SHELL (SINGLE-SCREEN ARCADE FRAME, UNIFIED HEADER)
   // ============================================================================
   return (
-    <div className="bg-slate-950 flex items-center justify-center min-h-screen w-screen p-0 sm:p-2 md:p-3 select-none overflow-hidden">
+    <div className="fixed inset-0 w-full h-[100dvh] bg-slate-950 flex flex-col items-center justify-center p-0 sm:p-2 md:p-3 select-none overflow-hidden overscroll-none">
       <div
-        className="relative w-full sm:max-w-2xl md:max-w-5xl lg:max-w-6xl xl:max-w-7xl h-[100dvh] sm:h-[96dvh] max-h-[980px] bg-brand-cream text-slate-950 overflow-hidden sm:rounded-2xl shadow-2xl flex flex-col justify-between border-3 border-slate-900"
+        className="relative w-full h-full sm:max-w-2xl md:max-w-5xl lg:max-w-6xl xl:max-w-7xl sm:h-[96dvh] max-h-[980px] bg-brand-cream text-slate-950 overflow-hidden sm:rounded-2xl shadow-2xl flex flex-col justify-between border-0 sm:border-3 border-slate-900"
         data-purpose="active-gameplay-arcade-shell"
       >
         {/* Top Colored Header Strip with Status Bar + Identical Unified Player Portfolio Bar */}
@@ -1270,7 +1267,7 @@ export default function BetweenTheLinesApp() {
         {/* Integrated Bottom Navigation Dock inside the Mobile Frame */}
         <nav
           aria-label="Mobile Bottom Navigation"
-          className="shrink-0 bg-white px-2.5 py-1.5 pb-[max(0.375rem,env(safe-area-inset-bottom))] border-t border-slate-300"
+          className="shrink-0 z-30 bg-white px-2 sm:px-2.5 py-1 sm:py-1.5 pb-[max(0.5rem,env(safe-area-inset-bottom))] border-t border-slate-300 shadow-md"
         >
           <div className="grid grid-cols-4 gap-1">
             <button

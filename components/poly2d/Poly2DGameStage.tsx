@@ -745,17 +745,17 @@ export function Poly2DGameStage({
       {/* =====================================================================
           1. TOP PRO-GAME ARCADE HUD (Status, Health, Time-of-Day, Controls)
           ===================================================================== */}
-      <header className="relative z-30 flex-none px-3 py-2 bg-slate-900/95 border-b-2 border-slate-800 backdrop-blur-md flex items-center justify-between gap-2 shadow-lg">
+      <header className="relative z-30 flex-none px-2 py-1 sm:px-3 sm:py-2 bg-slate-900/95 border-b-2 border-slate-800 backdrop-blur-md flex items-center justify-between gap-1.5 sm:gap-2 shadow-lg">
         {/* Left: Quest & Level Badge */}
-        <div className="flex items-center gap-2 min-w-0">
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-400 text-slate-950 font-title text-[11px] font-black uppercase tracking-wider shadow-sm shrink-0">
-            <Zap className="h-3 w-3 fill-slate-950" />
+        <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
+          <div className="inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg bg-amber-400 text-slate-950 font-title text-[10px] sm:text-[11px] font-black uppercase tracking-wider shadow-sm shrink-0">
+            <Zap className="h-2.5 w-2.5 sm:h-3 sm:w-3 fill-slate-950" />
             <span>LVL {levelNumber}</span>
           </div>
 
           <div className="min-w-0">
-            <div className="flex items-center gap-1.5 text-[11px] font-extrabold text-amber-300 truncate">
-              <MapPin className="h-3 w-3 shrink-0 text-amber-400" />
+            <div className="flex items-center gap-1 sm:gap-1.5 text-[10px] sm:text-[11px] font-extrabold text-amber-300 truncate">
+              <MapPin className="h-2.5 w-2.5 sm:h-3 sm:w-3 shrink-0 text-amber-400" />
               <span className="truncate">{sceneTitle}</span>
             </div>
             <div className="text-[10px] text-slate-400 font-sans hidden sm:block truncate">
@@ -792,7 +792,7 @@ export function Poly2DGameStage({
         </div>
 
         {/* Right: Time-of-Day Switcher, Wallet & Utility Controls */}
-        <div className="flex items-center gap-2 shrink-0">
+        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
           {/* Interactive Time-of-Day Pill */}
           <div className="hidden sm:inline-flex items-center rounded-lg bg-slate-800 p-0.5 border border-slate-700">
             <button
@@ -836,8 +836,8 @@ export function Poly2DGameStage({
             </button>
           </div>
 
-          {/* Wallet Balance with Golden Coin */}
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-gradient-to-r from-amber-500/20 to-yellow-500/10 border border-amber-400/40 text-amber-300 font-mono text-xs font-black shadow-inner">
+          {/* Wallet Balance with Golden Coin (Hidden on mobile to preserve screen width & avoid duplicate) */}
+          <div className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-gradient-to-r from-amber-500/20 to-yellow-500/10 border border-amber-400/40 text-amber-300 font-mono text-xs font-black shadow-inner">
             <Coins className="h-3.5 w-3.5 text-amber-400" />
             <span>₹{walletBalance.toLocaleString('en-IN')}</span>
           </div>
@@ -848,7 +848,7 @@ export function Poly2DGameStage({
               type="button"
               onClick={onToggleViewMode}
               title={`Switch to ${currentViewMode === 'poly2d' ? '3D Diorama' : 'Poly 2D'} View`}
-              className="px-2 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 text-[10px] font-extrabold flex items-center gap-1 cursor-pointer transition-colors shadow-xs"
+              className="px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 text-[10px] font-extrabold flex items-center gap-1 cursor-pointer transition-colors shadow-xs"
             >
               {currentViewMode === 'poly2d' ? (
                 <>
@@ -873,9 +873,9 @@ export function Poly2DGameStage({
               soundFX.muted = next;
             }}
             title={isMuted ? 'Unmute Game Sounds' : 'Mute Game Sounds'}
-            className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 hover:text-white cursor-pointer transition-colors"
+            className="p-1 sm:p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 hover:text-white cursor-pointer transition-colors"
           >
-            {isMuted ? <VolumeX className="h-3.5 w-3.5 text-slate-500" /> : <Volume2 className="h-3.5 w-3.5 text-amber-400" />}
+            {isMuted ? <VolumeX className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-slate-500" /> : <Volume2 className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-amber-400" />}
           </button>
         </div>
       </header>
@@ -885,9 +885,9 @@ export function Poly2DGameStage({
           ===================================================================== */}
       <div className="flex-1 flex flex-col md:flex-row min-h-0 overflow-hidden">
         {/* ===================================================================
-            A. THE POLY 2D ANIMATED WORLD SCENE (58% on Desktop, 42% on Mobile)
+            A. THE POLY 2D ANIMATED WORLD SCENE (58% on Desktop, 25% on Mobile)
             =================================================================== */}
-        <div className="relative flex-none h-[42%] md:h-full md:flex-[58] w-full overflow-hidden border-b-2 md:border-b-0 md:border-r-2 border-slate-800 bg-slate-950">
+        <div className="relative flex-none h-[25%] sm:h-[32%] md:h-full md:flex-[58] w-full overflow-hidden border-b-2 md:border-b-0 md:border-r-2 border-slate-800 bg-slate-950">
           {/* Dynamic Scene Diagnostic Telemetry Chip in Top Left */}
           <div className="absolute top-2 left-3 z-20 pointer-events-none flex items-center gap-1.5">
             <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-slate-900/85 border border-amber-400/40 text-[9px] font-mono font-bold text-amber-300 backdrop-blur-sm shadow-md">
@@ -2950,11 +2950,11 @@ export function Poly2DGameStage({
             =================================================================== */}
         <div className="flex-1 md:flex-[42] flex flex-col min-h-0 bg-slate-900 overflow-hidden">
           {/* Deck Prompt Header with Level Journey Road Map */}
-          <div className="flex-none p-3 pb-2 border-b border-slate-800 bg-slate-900/80">
+          <div className="flex-none p-2 sm:p-3 pb-1.5 sm:pb-2 border-b border-slate-800 bg-slate-900/80">
             {/* Visual Level Road Map Bar */}
-            <div className="flex items-center justify-between gap-1 flex-wrap mb-2">
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-400 text-slate-950 font-title text-[10px] font-black uppercase shadow-xs shrink-0">
-                <Sparkles className="h-3 w-3 fill-slate-950" />
+            <div className="flex items-center justify-between gap-1 flex-wrap mb-1 sm:mb-2">
+              <span className="inline-flex items-center gap-1 sm:gap-1.5 px-2 py-0.5 rounded-full bg-amber-400 text-slate-950 font-title text-[9px] sm:text-[10px] font-black uppercase shadow-xs shrink-0">
+                <Sparkles className="h-2.5 w-2.5 sm:h-3 sm:w-3 fill-slate-950" />
                 <span>DECISION {stage} OF {totalStages}</span>
               </span>
 
@@ -2968,7 +2968,7 @@ export function Poly2DGameStage({
                   return (
                     <div key={nodeNum} className="flex items-center">
                       <div
-                        className={`w-4 h-4 rounded-full flex items-center justify-center font-mono text-[9px] font-bold transition-all ${
+                        className={`w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full flex items-center justify-center font-mono text-[8px] sm:text-[9px] font-bold transition-all ${
                           isCurrent
                             ? 'bg-amber-400 text-slate-950 ring-2 ring-amber-300 scale-110 shadow-sm'
                             : isPast
@@ -2980,7 +2980,7 @@ export function Poly2DGameStage({
                       </div>
                       {i < totalStages - 1 && (
                         <div
-                          className={`w-1.5 h-0.5 ${
+                          className={`w-1 sm:w-1.5 h-0.5 ${
                             isPast ? 'bg-emerald-500' : 'bg-slate-800'
                           }`}
                         />
@@ -2991,25 +2991,25 @@ export function Poly2DGameStage({
               </div>
             </div>
 
-            <h2 className="font-title text-sm md:text-base text-white mt-1 leading-snug">
+            <h2 className="font-title text-xs sm:text-sm md:text-base text-white mt-0.5 sm:mt-1 leading-snug">
               {promptQuestion}
             </h2>
             {promptDescription && (
-              <p className="font-chunky text-xs text-slate-300 mt-0.5 line-clamp-2">
+              <p className="hidden sm:block font-chunky text-xs text-slate-300 mt-0.5 line-clamp-2">
                 {promptDescription}
               </p>
             )}
 
-            {/* Actor Context & Hover Preview Dialogue (Docked safely inside Decision Deck) */}
-            <div className="mt-2 flex items-center gap-2 px-2.5 py-1.5 rounded-xl bg-slate-950/70 border border-amber-400/30 text-white">
-              <span className="text-base shrink-0 p-1 bg-amber-400/20 rounded-lg border border-amber-400/30">
+            {/* Actor Context & Hover Preview Dialogue (Compact on mobile) */}
+            <div className="mt-1 sm:mt-2 flex items-center gap-1.5 sm:gap-2 px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-lg sm:rounded-xl bg-slate-950/70 border border-amber-400/30 text-white">
+              <span className="text-xs sm:text-base shrink-0 p-0.5 sm:p-1 bg-amber-400/20 rounded-md sm:rounded-lg border border-amber-400/30">
                 {activeHoverOption ? activeHoverOption.icon : actor.avatar}
               </span>
               <div className="min-w-0 flex-1">
-                <div className="text-[9px] font-title text-amber-300 uppercase tracking-wide truncate">
+                <div className="text-[8px] sm:text-[9px] font-title text-amber-300 uppercase tracking-wide truncate">
                   {activeHoverOption ? `Previewing: ${activeHoverOption.title}` : `${actor.name} · ${actor.role}`}
                 </div>
-                <div className="text-[11px] font-chunky text-slate-200 line-clamp-1">
+                <div className="text-[10px] sm:text-[11px] font-chunky text-slate-200 truncate">
                   {activeHoverOption?.previewDialogue ||
                     (levelTheme === 'vet_clinic'
                       ? 'Dr. Kavita: Miso is resting on the exam table. Treatment is proceeding smoothly.'
@@ -3025,14 +3025,14 @@ export function Poly2DGameStage({
 
           {/* Custom Controls */}
           {customControls && (
-            <div className="flex-1 p-3 overflow-y-auto no-scrollbar">
+            <div className="flex-1 p-2 sm:p-3 overflow-y-auto overscroll-contain no-scrollbar">
               {customControls}
             </div>
           )}
 
           {/* RPG Card Deck Grid with Staggered Deal-In Animation */}
           {!customControls && (
-            <div className="flex-1 p-3 overflow-y-auto no-scrollbar space-y-2.5">
+            <div className="flex-1 p-2 sm:p-3 overflow-y-auto overscroll-contain space-y-1.5 sm:space-y-2.5 touch-pan-y no-scrollbar">
               {options.map((option, idx) => {
                 const isHovered = hoveredOptionId === option.id;
                 const isExecuting = executingOption?.id === option.id;
@@ -3053,7 +3053,7 @@ export function Poly2DGameStage({
                     }}
                     onMouseLeave={() => setHoveredOptionId(null)}
                     onClick={() => triggerOptionAction(option)}
-                    className={`relative w-full text-left rounded-2xl p-3 border-2 transition-all duration-200 cursor-pointer flex items-center justify-between gap-3 shadow-md animate-card-deal ${
+                    className={`relative w-full text-left rounded-xl sm:rounded-2xl p-2 sm:p-3 border-2 transition-all duration-200 cursor-pointer flex items-center justify-between gap-2 sm:gap-3 shadow-md animate-card-deal ${
                       isExecuting
                         ? 'border-amber-400 bg-amber-500/20 scale-[0.98]'
                         : isHovered
@@ -3061,35 +3061,35 @@ export function Poly2DGameStage({
                         : 'border-slate-800 bg-slate-800/60 hover:bg-slate-800 hover:border-slate-700'
                     }`}
                   >
-                    {/* Hotkey Tag Ribbon */}
-                    <div className="absolute -top-2 right-4 px-2 py-0.5 rounded-md bg-slate-950 border border-slate-700 font-mono text-[10px] font-black text-amber-400 shadow-sm">
+                    {/* Hotkey Tag Ribbon (Desktop only) */}
+                    <div className="hidden sm:block absolute -top-2 right-4 px-2 py-0.5 rounded-md bg-slate-950 border border-slate-700 font-mono text-[10px] font-black text-amber-400 shadow-sm">
                       KEY [{idx + 1}]
                     </div>
 
                     {/* Option Details */}
-                    <div className="flex items-center gap-3 min-w-0 flex-1">
-                      <div className="w-11 h-11 rounded-2xl flex items-center justify-center text-2xl bg-slate-900 border border-slate-700 shadow-inner shrink-0 group-hover:scale-105 transition-transform">
+                    <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
+                      <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-lg sm:rounded-2xl flex items-center justify-center text-lg sm:text-2xl bg-slate-900 border border-slate-700 shadow-inner shrink-0 group-hover:scale-105 transition-transform">
                         {option.icon}
                       </div>
 
                       <div className="min-w-0 flex-1">
-                        <div className="flex items-center gap-2 flex-wrap">
-                          <h3 className="font-title text-xs md:text-sm text-white truncate">
+                        <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
+                          <h3 className="font-title text-xs sm:text-sm text-white truncate">
                             {option.title}
                           </h3>
                         </div>
 
-                        <p className="font-chunky text-[11px] text-slate-300 mt-0.5 line-clamp-2 leading-relaxed">
+                        <p className="font-chunky text-[10px] sm:text-[11px] text-slate-300 mt-0.5 line-clamp-1 sm:line-clamp-2 leading-tight sm:leading-relaxed">
                           {option.description}
                         </p>
 
-                        <div className="mt-1.5 flex flex-wrap items-center gap-1.5">
-                          <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-slate-900 text-amber-300 border border-amber-400/30">
+                        <div className="mt-1 flex flex-wrap items-center gap-1 sm:gap-1.5">
+                          <span className="inline-flex items-center px-1.5 py-0.2 sm:px-2 sm:py-0.5 rounded-full text-[9px] sm:text-[10px] font-extrabold bg-slate-900 text-amber-300 border border-amber-400/30">
                             {option.badge}
                           </span>
                           {option.costBadge && (
                             <span
-                              className={`inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-mono font-bold border ${
+                              className={`inline-flex items-center px-1.5 py-0.2 sm:px-2 sm:py-0.5 rounded-full text-[9px] sm:text-[10px] font-mono font-bold border ${
                                 isFree
                                   ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40'
                                   : 'bg-rose-500/20 text-rose-300 border-rose-500/40'
@@ -3099,8 +3099,8 @@ export function Poly2DGameStage({
                             </span>
                           )}
                           {isUrgent && (
-                            <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full text-[9px] font-bold bg-cyan-500/20 text-cyan-300 border border-cyan-500/40">
-                              <Activity className="h-2.5 w-2.5" />
+                            <span className="inline-flex items-center gap-1 px-1.5 py-0.2 rounded-full text-[8px] sm:text-[9px] font-bold bg-cyan-500/20 text-cyan-300 border border-cyan-500/40">
+                              <Activity className="h-2 w-2 sm:h-2.5 sm:w-2.5" />
                               <span>PRIORITY CARE</span>
                             </span>
                           )}
@@ -3111,13 +3111,13 @@ export function Poly2DGameStage({
                     {/* Action Arrow Button */}
                     <div className="shrink-0">
                       <div
-                        className={`w-9 h-9 rounded-xl flex items-center justify-center transition-all ${
+                        className={`w-7 h-7 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl flex items-center justify-center transition-all ${
                           isHovered
                             ? 'bg-amber-400 text-slate-950 scale-110 shadow-md'
                             : 'bg-slate-700 text-slate-300'
                         }`}
                       >
-                        <ArrowRight className="h-4 w-4" />
+                        <ArrowRight className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                       </div>
                     </div>
                   </button>
@@ -3127,7 +3127,7 @@ export function Poly2DGameStage({
           )}
 
           {/* Quick Footer Bar with Level Indicator */}
-          <footer className="flex-none px-3 py-2 bg-slate-950 border-t border-slate-800 flex items-center justify-between text-[11px] text-slate-400">
+          <footer className="flex-none px-2.5 py-1 sm:px-3 sm:py-1.5 bg-slate-950 border-t border-slate-800 flex items-center justify-between text-[9px] sm:text-[11px] text-slate-400">
             <div className="flex items-center gap-1.5 font-sans">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
               <span className="uppercase font-bold text-slate-300">

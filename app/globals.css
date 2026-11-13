@@ -30,13 +30,31 @@
 
 @layer base {
   html, body {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    height: 100dvh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    overscroll-behavior: none;
+    overscroll-behavior-y: none;
+    -webkit-overflow-scrolling: auto;
     font-family: 'Fredoka', cursive, sans-serif;
     background-color: #0f172a;
     color: #111827;
     -webkit-font-smoothing: antialiased;
     -webkit-tap-highlight-color: transparent;
-    overscroll-behavior-y: none;
-    min-height: 100dvh;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  body {
+    touch-action: pan-x pan-y;
   }
 
   button, a, input, select, textarea {

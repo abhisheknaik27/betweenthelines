@@ -211,24 +211,24 @@ export function UnifiedPlayerPortfolioBar({
     <section
       aria-label="Player Profile and Financial Portfolio"
       data-testid="unified-player-portfolio-bar"
-      className="relative z-20 mx-3 mt-1.5 rounded-xl bg-white/95 backdrop-blur-xs border-2 border-slate-900 p-2 shadow-xs text-slate-950"
+      className="relative z-20 mx-1.5 sm:mx-3 mt-1 sm:mt-1.5 rounded-lg sm:rounded-xl bg-white/95 backdrop-blur-xs border-2 border-slate-900 p-1.5 sm:p-2 shadow-xs text-slate-950"
     >
       {/* Row 1: Player Identity + Clean Market & Pause Action */}
-      <div className="flex items-center justify-between gap-2 pb-1.5 border-b border-slate-200">
-        <div className="flex items-center gap-2 min-w-0 flex-1">
+      <div className="flex items-center justify-between gap-1.5 sm:gap-2 pb-1 sm:pb-1.5 border-b border-slate-200">
+        <div className="flex items-center gap-1.5 sm:gap-2 min-w-0 flex-1">
           {showBackButton && onBack && (
             <button
               type="button"
               onClick={onBack}
               aria-label="Back to Home"
-              className="h-7 w-7 rounded-lg bg-slate-100 hover:bg-slate-200 border border-slate-300 flex items-center justify-center text-slate-900 shrink-0 cursor-pointer transition-colors"
+              className="h-6 w-6 sm:h-7 sm:w-7 rounded-lg bg-slate-100 hover:bg-slate-200 border border-slate-300 flex items-center justify-center text-slate-900 shrink-0 cursor-pointer transition-colors"
             >
-              <ArrowLeft className="h-3.5 w-3.5 stroke-[2.5]" />
+              <ArrowLeft className="h-3 w-3 sm:h-3.5 sm:w-3.5 stroke-[2.5]" />
             </button>
           )}
 
           {/* Avatar Badge */}
-          <div className="w-7 h-7 rounded-lg bg-[#FFD214] border border-slate-900 flex items-center justify-center text-xs font-extrabold shrink-0">
+          <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-[#FFD214] border border-slate-900 flex items-center justify-center text-[11px] sm:text-xs font-extrabold shrink-0">
             👤
           </div>
 
@@ -244,7 +244,7 @@ export function UnifiedPlayerPortfolioBar({
                     if (e.key === 'Enter') commitName();
                   }}
                   aria-label="Edit Player Name"
-                  className="w-32 rounded border border-slate-400 bg-white px-1.5 py-0.5 text-xs font-bold text-slate-950 focus:outline-hidden"
+                  className="w-28 sm:w-32 rounded border border-slate-400 bg-white px-1.5 py-0.5 text-xs font-bold text-slate-950 focus:outline-hidden"
                   autoFocus
                 />
                 <button
@@ -268,21 +268,21 @@ export function UnifiedPlayerPortfolioBar({
               >
                 <span
                   data-testid="hud-player-name"
-                  className="font-chunky text-[13px] font-extrabold text-slate-950 truncate"
+                  className="font-chunky text-xs sm:text-[13px] font-extrabold text-slate-950 truncate"
                 >
                   {playerName}
                 </span>
                 <Pencil className="h-2.5 w-2.5 text-slate-400 group-hover:text-slate-700 shrink-0" />
               </button>
             )}
-            <span className="block text-[9px] font-sans font-extrabold uppercase tracking-wider text-slate-500 leading-none truncate mt-0.5">
+            <span className="block text-[8px] sm:text-[9px] font-sans font-extrabold uppercase tracking-wider text-slate-500 leading-none truncate mt-0.5">
               {contextLabel}
             </span>
           </div>
         </div>
 
         {/* Right Controls: Clean Map Icon + Market Button + Single Pause/Menu Button when playing */}
-        <div className="flex items-center gap-1.5 shrink-0">
+        <div className="flex items-center gap-1 sm:gap-1.5 shrink-0">
           {onOpenMap && (
             <button
               type="button"
@@ -290,16 +290,16 @@ export function UnifiedPlayerPortfolioBar({
               aria-label="Open Interactive Level Map"
               title="Open Interactive Level Map & Report Cards"
               data-testid="hud-open-map-btn"
-              className="h-7 w-7 flex items-center justify-center rounded-lg bg-emerald-400 hover:bg-emerald-300 border border-slate-900 text-slate-950 shadow-2xs cursor-pointer transition-colors"
+              className="h-6 w-6 sm:h-7 sm:w-7 flex items-center justify-center rounded-lg bg-emerald-400 hover:bg-emerald-300 border border-slate-900 text-slate-950 shadow-2xs cursor-pointer transition-colors"
             >
-              <Map className="h-3.5 w-3.5 stroke-[2.25]" />
+              <Map className="h-3 w-3 sm:h-3.5 sm:w-3.5 stroke-[2.25]" />
             </button>
           )}
 
           <button
             type="button"
             onClick={onOpenMarketplace}
-            className="rounded-lg bg-[#FFD214] hover:bg-yellow-300 border border-slate-900 px-2.5 py-1 text-[11px] font-chunky font-extrabold text-slate-950 shadow-2xs cursor-pointer transition-colors"
+            className="rounded-lg bg-[#FFD214] hover:bg-yellow-300 border border-slate-900 px-2 sm:px-2.5 py-0.5 sm:py-1 text-[10px] sm:text-[11px] font-chunky font-extrabold text-slate-950 shadow-2xs cursor-pointer transition-colors"
           >
             + Market
           </button>
@@ -313,31 +313,31 @@ export function UnifiedPlayerPortfolioBar({
                 e.currentTarget.blur();
                 onPause();
               }}
-              className="h-7 w-7 flex items-center justify-center rounded-lg bg-slate-100 hover:bg-slate-200 border border-slate-300 text-slate-900 cursor-pointer transition-colors"
+              className="h-6 w-6 sm:h-7 sm:w-7 flex items-center justify-center rounded-lg bg-slate-100 hover:bg-slate-200 border border-slate-300 text-slate-900 cursor-pointer transition-colors"
             >
-              <Pause className="h-3.5 w-3.5" />
+              <Pause className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
             </button>
           )}
         </div>
       </div>
 
       {/* Row 2: 5 Unified Financial Metrics (Balance, Wallet/Cash, Savings, Invest, Debt) */}
-      <div className="mt-1.5 grid grid-cols-5 gap-1">
+      <div className="mt-1 sm:mt-1.5 grid grid-cols-5 gap-0.5 sm:gap-1">
         {metrics.map((m) => (
           <button
             key={m.key}
             type="button"
             onClick={onOpenDashboard}
-            className={`rounded-md border px-1.5 py-1 text-left transition-colors hover:border-slate-500 cursor-pointer ${m.bg}`}
+            className={`rounded-md border px-1 py-0.5 sm:px-1.5 sm:py-1 text-left transition-colors hover:border-slate-500 cursor-pointer ${m.bg}`}
           >
             <span
-              className={`block text-[8px] font-sans font-extrabold uppercase tracking-tight leading-none truncate ${m.labelColor}`}
+              className={`block text-[7px] sm:text-[8px] font-sans font-extrabold uppercase tracking-tight leading-none truncate ${m.labelColor}`}
             >
               {m.label}
             </span>
             <strong
               data-testid={m.testId}
-              className={`block font-chunky text-[11px] font-extrabold tabular-nums leading-tight mt-0.5 truncate ${m.valueColor}`}
+              className={`block font-chunky text-[10px] sm:text-[11px] font-extrabold tabular-nums leading-tight mt-0.5 truncate ${m.valueColor}`}
             >
               {m.value}
             </strong>

@@ -417,6 +417,12 @@ export default function BetweenTheLinesApp() {
     setBackConfirmOpen(true);
   }, []);
 
+  const handleGoHome = useCallback(() => {
+    soundFX.playClick();
+    setShellState('title');
+    setTitleView('home');
+  }, []);
+
   const formatTimer = (secs: number) => {
     const mins = Math.floor(secs / 60);
     const rem = secs % 60;
@@ -1149,6 +1155,7 @@ export default function BetweenTheLinesApp() {
           funfairState={funfairState}
           onPlayLevel={handlePlaySpecificLevel}
           onReplayStory={handleReplayStory}
+          onGoHome={handleGoHome}
         />
       </div>
     );
@@ -1241,6 +1248,7 @@ export default function BetweenTheLinesApp() {
               onSwitchToFunfair={() => {
                 handleStartGame('funfair');
               }}
+              onGoHome={handleGoHome}
             />
           ) : (
             <FunfairGameView
@@ -1252,6 +1260,7 @@ export default function BetweenTheLinesApp() {
               onSwitchToMiso={() => {
                 handleStartGame('miso');
               }}
+              onGoHome={handleGoHome}
             />
           )}
         </main>
@@ -1364,6 +1373,7 @@ export default function BetweenTheLinesApp() {
           funfairState={funfairState}
           onPlayLevel={handlePlaySpecificLevel}
           onReplayStory={handleReplayStory}
+          onGoHome={handleGoHome}
         />
 
         {/* Pause Modal Sheet */}

@@ -9,6 +9,7 @@ import {
   Trophy,
   RefreshCcw,
   Heart,
+  Home,
 } from 'lucide-react';
 import {
   FunfairGameState,
@@ -49,6 +50,7 @@ interface FunfairGameViewProps {
   onOpenMarketplace: () => void;
   onRestart: () => void;
   onSwitchToMiso: () => void;
+  onGoHome: () => void;
 }
 
 export function FunfairGameView({
@@ -58,6 +60,7 @@ export function FunfairGameView({
   onOpenMarketplace,
   onRestart,
   onSwitchToMiso,
+  onGoHome,
 }: FunfairGameViewProps) {
   // Junction 3 state (Initial Stock Quantities)
   const [j3Quantities, setJ3Quantities] = useState<Record<FunfairProductId, number>>({
@@ -1339,6 +1342,7 @@ export function FunfairGameView({
         multiplier={report.growthMultiple}
         totalSeconds={270}
         remainingSeconds={state.game_timer}
+        onGoHome={onGoHome}
       />
       <FunfairIllustrationPanel
         stallType={state.stall_type}
@@ -1504,25 +1508,36 @@ export function FunfairGameView({
           </div>
         )}
 
-        <div className="grid grid-cols-2 gap-2 pt-1">
+        <div className="space-y-2 pt-2">
           <button
             type="button"
-            onClick={onRestart}
-            data-start="true"
-            className="btn-tactile-white flex items-center justify-center gap-1.5 rounded-lg bg-white py-2 text-xs font-chunky font-bold text-slate-900 cursor-pointer"
+            onClick={onGoHome}
+            className="btn-tactile-yellow w-full flex items-center justify-center gap-2 rounded-xl bg-brand-yellow hover:bg-yellow-300 text-slate-950 py-2.5 px-4 text-xs sm:text-sm font-chunky font-black shadow-md active:scale-[0.98] transition-all cursor-pointer"
           >
-            <RefreshCcw className="h-3.5 w-3.5" />
-            <span>Replay Funfair</span>
+            <Home className="h-4 w-4 stroke-[2.5]" />
+            <span>Go Back to Home</span>
           </button>
 
-          <button
-            type="button"
-            onClick={onSwitchToMiso}
-            className="btn-tactile-yellow flex items-center justify-center gap-1.5 rounded-lg bg-brand-yellow py-2 text-xs font-chunky font-extrabold text-slate-950 cursor-pointer"
-          >
-            <Heart className="h-3.5 w-3.5" />
-            <span>Play Miso Story</span>
-          </button>
+          <div className="grid grid-cols-2 gap-2">
+            <button
+              type="button"
+              onClick={onRestart}
+              data-start="true"
+              className="btn-tactile-white flex items-center justify-center gap-1.5 rounded-lg bg-white py-2 text-xs font-chunky font-bold text-slate-900 cursor-pointer"
+            >
+              <RefreshCcw className="h-3.5 w-3.5" />
+              <span>Replay Funfair</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={onSwitchToMiso}
+              className="btn-tactile-white flex items-center justify-center gap-1.5 rounded-lg bg-white hover:bg-slate-50 py-2 text-xs font-chunky font-bold text-slate-900 cursor-pointer"
+            >
+              <Heart className="h-3.5 w-3.5" />
+              <span>Play Miso Story</span>
+            </button>
+          </div>
         </div>
       </div>
     </div>

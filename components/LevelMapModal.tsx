@@ -13,6 +13,7 @@ import {
   TrendingUp,
   Wallet,
   BookOpen,
+  Home,
 } from 'lucide-react';
 import { MisoGameState, MisoDecisionRecord, getFinalNetPosition } from '@/lib/miso-engine';
 import {
@@ -292,6 +293,7 @@ interface LevelMapModalProps {
   funfairState: FunfairGameState;
   onPlayLevel: (story: 'miso' | 'funfair', levelNumber: number) => void;
   onReplayStory: (story: 'miso' | 'funfair') => void;
+  onGoHome?: () => void;
 }
 
 export function LevelMapModal({
@@ -302,6 +304,7 @@ export function LevelMapModal({
   funfairState,
   onPlayLevel,
   onReplayStory,
+  onGoHome,
 }: LevelMapModalProps) {
   const [overrideStory, setOverrideStory] = useState<'miso' | 'funfair' | null>(null);
   const [selectedLevel, setSelectedLevel] = useState<number | null>(null);
@@ -1076,6 +1079,21 @@ export function LevelMapModal({
                     ← Back to Map
                   </button>
                 </div>
+
+                {onGoHome && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      soundFX.playClick();
+                      handleClose();
+                      onGoHome();
+                    }}
+                    className="w-full rounded-lg border-2 border-slate-900 bg-amber-400 hover:bg-amber-300 py-2 px-3 font-chunky text-xs font-extrabold text-slate-950 shadow-[0_2px_0_#111827] active:translate-y-0.5 transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                  >
+                    <Home className="h-3.5 w-3.5 stroke-[2.5]" />
+                    <span>Go Back to Home</span>
+                  </button>
+                )}
               </div>
             </div>
           </div>

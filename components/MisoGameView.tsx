@@ -10,6 +10,7 @@ import {
   Store,
   RefreshCcw,
   Gamepad2,
+  Home,
 } from 'lucide-react';
 import {
   MisoGameState,
@@ -41,6 +42,7 @@ interface MisoGameViewProps {
   onOpenMarketplace: () => void;
   onRestart: () => void;
   onSwitchToFunfair: () => void;
+  onGoHome: () => void;
 }
 
 export function MisoGameView({
@@ -50,6 +52,7 @@ export function MisoGameView({
   onOpenMarketplace,
   onRestart,
   onSwitchToFunfair,
+  onGoHome,
 }: MisoGameViewProps) {
   // Local UI state for multi-step or configurable junction controls
   const [j2Option, setJ2Option] = useState<'J2_A' | 'J2_B' | 'J2_C' | 'J2_D'>('J2_A');
@@ -719,6 +722,7 @@ export function MisoGameView({
         score={ending.finalNetPosition}
         totalSeconds={285}
         remainingSeconds={state.timerSeconds}
+        onGoHome={onGoHome}
       />
       <MisoIllustrationPanel
         scene="recovery"
@@ -880,25 +884,36 @@ export function MisoGameView({
           </div>
         )}
 
-        <div className="grid grid-cols-2 gap-2 pt-1">
+        <div className="space-y-2 pt-2">
           <button
             type="button"
-            onClick={onRestart}
-            data-start="true"
-            className="btn-tactile-white flex items-center justify-center gap-1.5 rounded-lg bg-white py-2 text-xs font-chunky font-bold text-slate-900 cursor-pointer"
+            onClick={onGoHome}
+            className="btn-tactile-yellow w-full flex items-center justify-center gap-2 rounded-xl bg-brand-yellow hover:bg-yellow-300 text-slate-950 py-2.5 px-4 text-xs sm:text-sm font-chunky font-black shadow-md active:scale-[0.98] transition-all cursor-pointer"
           >
-            <RefreshCcw className="h-3.5 w-3.5" />
-            <span>Replay Miso</span>
+            <Home className="h-4 w-4 stroke-[2.5]" />
+            <span>Go Back to Home</span>
           </button>
 
-          <button
-            type="button"
-            onClick={onSwitchToFunfair}
-            className="btn-tactile-yellow flex items-center justify-center gap-1.5 rounded-lg bg-brand-yellow py-2 text-xs font-chunky font-extrabold text-slate-950 cursor-pointer"
-          >
-            <Gamepad2 className="h-3.5 w-3.5" />
-            <span>Play Funfair 4×</span>
-          </button>
+          <div className="grid grid-cols-2 gap-2">
+            <button
+              type="button"
+              onClick={onRestart}
+              data-start="true"
+              className="btn-tactile-white flex items-center justify-center gap-1.5 rounded-lg bg-white py-2 text-xs font-chunky font-bold text-slate-900 cursor-pointer"
+            >
+              <RefreshCcw className="h-3.5 w-3.5" />
+              <span>Replay Miso</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={onSwitchToFunfair}
+              className="btn-tactile-white flex items-center justify-center gap-1.5 rounded-lg bg-white hover:bg-slate-50 py-2 text-xs font-chunky font-bold text-slate-900 cursor-pointer"
+            >
+              <Gamepad2 className="h-3.5 w-3.5" />
+              <span>Play Funfair 4×</span>
+            </button>
+          </div>
         </div>
       </div>
     </div>

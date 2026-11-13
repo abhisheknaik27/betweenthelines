@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useMemo, useState } from 'react';
-import { Crown, Medal, Timer, TrendingUp, Trophy, Users, X } from 'lucide-react';
+import { Crown, Home, Medal, Timer, TrendingUp, Trophy, Users, X } from 'lucide-react';
 
 type StoryId = 'miso' | 'funfair';
 type LeaderboardEntry = { id: string; name: string; story: StoryId; score: number; seconds: number; isPlayer?: boolean };
@@ -18,9 +18,10 @@ const BENCHMARKS: LeaderboardEntry[] = [
 const STORAGE_KEY = 'btl_completed_runs_v1';
 const formatTime = (seconds: number) => `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}`;
 
-export function VictoryCard({ story, playerName, title, subtitle, score, totalSeconds, remainingSeconds, multiplier }: {
+export function VictoryCard({ story, playerName, title, subtitle, score, totalSeconds, remainingSeconds, multiplier, onGoHome }: {
   story: StoryId; playerName: string; title: string; subtitle: string; score: number;
   totalSeconds: number; remainingSeconds: number; multiplier?: number;
+  onGoHome?: () => void;
 }) {
   const [open, setOpen] = useState(false);
   const [savedRuns] = useState<LeaderboardEntry[]>(() => {
@@ -66,9 +67,25 @@ export function VictoryCard({ story, playerName, title, subtitle, score, totalSe
         <div className="victory-stat"><Medal /><span>{multiplier ? 'Growth' : 'Standing'}</span><strong>{multiplier ? `${multiplier}×` : `Rank ${rank}`}</strong></div>
       </div>
 
-      <button type="button" onClick={() => setOpen(true)} className="victory-leaderboard-btn">
-        <Users className="h-4 w-4" /> View leaderboard
-      </button>
+      <div className="relative z-10 mt-3 flex items-center gap-2">
+        {onGoHome && (
+          <button
+            type="button"
+            onClick={onGoHome}
+            className="flex-1 flex items-center justify-center gap-1.5 rounded-xl bg-amber-400 hover:bg-amber-300 border-2 border-slate-950 text-slate-950 font-chunky font-black text-xs py-2 px-3 shadow-md active:scale-95 transition-all cursor-pointer"
+          >
+            <Home className="h-3.5 w-3.5 stroke-[2.5]" />
+            <span>Go Back to Home</span>
+          </button>
+        )}
+        <button
+          type="button"
+          onClick={() => setOpen(true)}
+          className={`victory-leaderboard-btn ${onGoHome ? 'flex-1 mt-0' : ''}`}
+        >
+          <Users className="h-4 w-4" /> View leaderboard
+        </button>
+      </div>
     </section>
 
     {open && <div className="fixed inset-0 z-[70] grid place-items-center bg-slate-950/75 p-3 backdrop-blur-sm" role="dialog" aria-modal="true" aria-label="Leaderboard">

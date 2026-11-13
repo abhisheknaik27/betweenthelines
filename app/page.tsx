@@ -565,10 +565,10 @@ export default function BetweenTheLinesApp() {
                     setActiveGame('miso');
                     setTitleView('miso-splash');
                   }}
-                  className="group relative text-left overflow-hidden rounded-xl border-3 border-slate-900 bg-[#FFFBF0] p-3 sm:p-4 shadow-[0_4px_0_#0f172a] hover:shadow-[0_2px_0_#0f172a] hover:translate-y-[2px] active:translate-y-[4px] active:shadow-none transition-all cursor-pointer flex flex-col sm:flex-row items-center gap-3 md:flex-1 justify-between"
+                  className="group relative text-left overflow-hidden rounded-xl border-3 border-slate-900 bg-[#FFFBF0] p-2.5 sm:p-4 shadow-[0_4px_0_#0f172a] hover:shadow-[0_2px_0_#0f172a] hover:translate-y-[2px] active:translate-y-[4px] active:shadow-none transition-all cursor-pointer flex flex-col sm:flex-row items-center gap-2.5 sm:gap-4 md:flex-1 justify-center"
                 >
                   {/* Left Sticker Thumbnail */}
-                  <div className="relative w-24 h-24 sm:w-28 sm:h-28 shrink-0 rounded-lg miso-pattern-bg border-2 border-slate-900 flex items-center justify-center p-1.5 overflow-hidden shadow-xs">
+                  <div className="relative w-20 h-20 sm:w-28 sm:h-28 shrink-0 rounded-lg miso-pattern-bg border-2 border-slate-900 flex items-center justify-center p-1.5 overflow-hidden shadow-xs">
                     <img
                       src="/assets/miso-hero-sticker.png"
                       alt="Miso's Chai Wala Sticker"
@@ -577,7 +577,7 @@ export default function BetweenTheLinesApp() {
                   </div>
 
                   {/* Right Story Info */}
-                  <div className="flex-1 min-w-0 flex flex-col justify-between h-full w-full">
+                  <div className="flex-1 min-w-0 flex flex-col justify-center w-full">
                     <div>
                       <div className="flex items-center justify-between gap-1">
                         <span className="inline-block bg-emerald-400 border border-slate-900 rounded-md px-1.5 py-0.5 text-[9px] font-sans font-black uppercase text-slate-950">
@@ -587,16 +587,12 @@ export default function BetweenTheLinesApp() {
                           7 Care Steps
                         </span>
                       </div>
-                      <h2 className="mt-1 font-title text-base sm:text-lg leading-tight text-slate-950 uppercase">
+                      <h2 className="mt-1 font-title text-sm sm:text-base md:text-lg leading-tight text-slate-950 uppercase">
                         Helping Miso
                       </h2>
                       <p className="mt-1 text-xs font-chunky font-medium text-slate-600 line-clamp-2 leading-snug">
                         Help Miso &amp; Ramesh Kaka balance ~₹6,350 in vet care, savings &amp; loans.
                       </p>
-                    </div>
-                    <div className="mt-2.5 inline-flex items-center justify-between rounded-lg bg-teal-700 hover:bg-teal-600 text-white border-2 border-slate-900 px-3 py-1.5 text-xs font-chunky font-bold shadow-xs">
-                      <span>🐱 Play Miso’s Rescue</span>
-                      <span>▶</span>
                     </div>
                   </div>
                 </button>
@@ -610,10 +606,10 @@ export default function BetweenTheLinesApp() {
                     setActiveGame('funfair');
                     setTitleView('funfair-splash');
                   }}
-                  className="group relative text-left overflow-hidden rounded-xl border-3 border-slate-900 bg-[#FFFBF0] p-3 sm:p-4 shadow-[0_4px_0_#0f172a] hover:shadow-[0_2px_0_#0f172a] hover:translate-y-[2px] active:translate-y-[4px] active:shadow-none transition-all cursor-pointer flex flex-col sm:flex-row items-center gap-3 md:flex-1 justify-between"
+                  className="group relative text-left overflow-hidden rounded-xl border-3 border-slate-900 bg-[#FFFBF0] p-2.5 sm:p-4 shadow-[0_4px_0_#0f172a] hover:shadow-[0_2px_0_#0f172a] hover:translate-y-[2px] active:translate-y-[4px] active:shadow-none transition-all cursor-pointer flex flex-col sm:flex-row items-center gap-2.5 sm:gap-4 md:flex-1 justify-center"
                 >
                   {/* Left Sticker Thumbnail */}
-                  <div className="relative w-24 h-24 sm:w-28 sm:h-28 shrink-0 rounded-lg carnival-pattern-bg border-2 border-slate-900 flex items-center justify-center p-1.5 overflow-hidden shadow-xs">
+                  <div className="relative w-20 h-20 sm:w-28 sm:h-28 shrink-0 rounded-lg carnival-pattern-bg border-2 border-slate-900 flex items-center justify-center p-1.5 overflow-hidden shadow-xs">
                     <img
                       src="/assets/funfair-hero-sticker.png"
                       alt="Funfair Founder Nimbu & Chat Sticker"
@@ -622,7 +618,7 @@ export default function BetweenTheLinesApp() {
                   </div>
 
                   {/* Right Story Info */}
-                  <div className="flex-1 min-w-0 flex flex-col justify-between h-full w-full">
+                  <div className="flex-1 min-w-0 flex flex-col justify-center w-full">
                     <div>
                       <div className="flex items-center justify-between gap-1">
                         <span className="inline-block bg-brand-yellow border border-slate-900 rounded-md px-1.5 py-0.5 text-[9px] font-sans font-black uppercase text-slate-950">
@@ -632,16 +628,12 @@ export default function BetweenTheLinesApp() {
                           8 Decisions
                         </span>
                       </div>
-                      <h2 className="mt-1 font-title text-base sm:text-lg leading-tight text-slate-950 uppercase">
+                      <h2 className="mt-1 font-title text-sm sm:text-base md:text-lg leading-tight text-slate-950 uppercase">
                         Funfair Founder
                       </h2>
                       <p className="mt-1 text-xs font-chunky font-medium text-slate-600 line-clamp-2 leading-snug">
                         Run a mela stall across 3 rushes, restock smartly &amp; grow your net balance.
                       </p>
-                    </div>
-                    <div className="mt-2.5 inline-flex items-center justify-between rounded-lg bg-brand-blue hover:bg-blue-600 text-white border-2 border-slate-900 px-3 py-1.5 text-xs font-chunky font-bold shadow-xs">
-                      <span>🎪 Play Funfair Founder</span>
-                      <span>▶</span>
                     </div>
                   </div>
                 </button>
